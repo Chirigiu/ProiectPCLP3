@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Biletul Tău</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Bilet Generat</h1>
+    <p>Plata a fost confirmată.</p>
+
+    <hr>
+
+    <p><strong>Pasager:</strong> <span id="bilet-nume"></span></p>
+    <p><strong>Rută:</strong> <span id="bilet-plecare"></span> -> <span id="bilet-destinatie"></span></p>
+    <p><strong>Data plecării:</strong> <span id="bilet-data"></span></p>
+
+    <h3>Serie bilet:</h3>
+    <p><strong id="cod-bilet"></strong></p>
+
+    <hr>
+    <a href="index.html">Rezervă alt bilet</a>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+
+        document.getElementById("bilet-nume").textContent = params.get("nume") || "-";
+        document.getElementById("bilet-plecare").textContent = params.get("plecare") || "-";
+        document.getElementById("bilet-destinatie").textContent = params.get("destinatie") || "-";
+        document.getElementById("bilet-data").textContent = params.get("data") || "-";
+
+        function genereazaCod(lungime) {
+            const caractere = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            let cod = "";
+            for (let i = 0; i < lungime; i++) {
+                const index = Math.floor(Math.random() * caractere.length);
+                cod += caractere[index];
+            }
+            return cod;
+        }
+
+        document.getElementById("cod-bilet").textContent = genereazaCod(16);
+    </script>
+</body>
+</html>

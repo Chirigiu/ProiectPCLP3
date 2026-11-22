@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Plată Bilet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Confirmare și Plată</h1>
+
+    <p><strong>Pasager:</strong> <span id="afis-nume"></span></p>
+    <p><strong>Plecare:</strong> <span id="afis-plecare"></span></p>
+    <p><strong>Destinație:</strong> <span id="afis-destinatie"></span></p>
+    <p><strong>Data plecării:</strong> <span id="afis-data"></span></p>
+
+    <hr>
+
+    <button type="button" onclick="plateste()">Plătește</button>
+    <br><br>
+    <a href="index.html">Înapoi la formular</a>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+
+        document.getElementById("afis-nume").textContent = params.get("nume") || "-";
+        document.getElementById("afis-plecare").textContent = params.get("plecare") || "-";
+        document.getElementById("afis-destinatie").textContent = params.get("destinatie") || "-";
+        document.getElementById("afis-data").textContent = params.get("data") || "-";
+
+        function plateste() {
+            window.location.href = "bilet.html" + window.location.search;
+        }
+    </script>
+</body>
+</html>

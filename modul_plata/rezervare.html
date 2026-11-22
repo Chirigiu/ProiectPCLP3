@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Rezervare Zbor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Rezervare Bilet de Avion</h1>
+
+    <form action="plata.html" method="GET" onsubmit="return verificaRute()">
+        <label for="nume">Nume și prenume:</label><br>
+        <input type="text" id="nume" name="nume" required><br><br>
+
+        <label for="data">Data plecării:</label><br>
+        <input type="date" id="data" name="data" required><br><br>
+
+        <label for="plecare">Locul de plecare:</label><br>
+        <select id="plecare" name="plecare" required>
+            <option value="">-- Alege orașul --</option>
+            <option value="București">București</option>
+            <option value="Cluj-Napoca">Cluj-Napoca</option>
+            <option value="Londra">Londra</option>
+            <option value="Paris">Paris</option>
+            <option value="Roma">Roma</option>
+            <option value="Madrid">Madrid</option>
+        </select><br><br>
+
+        <label for="destinatie">Destinația:</label><br>
+        <select id="destinatie" name="destinatie" required>
+            <option value="">-- Alege orașul --</option>
+            <option value="București">București</option>
+            <option value="Cluj-Napoca">Cluj-Napoca</option>
+            <option value="Londra">Londra</option>
+            <option value="Paris">Paris</option>
+            <option value="Roma">Roma</option>
+            <option value="Madrid">Madrid</option>
+        </select><br><br>
+
+        <button type="submit">Continuă spre plată</button>
+    </form>
+
+    <script>
+        function verificaRute() {
+            const plecare = document.getElementById("plecare").value;
+            const destinatie = document.getElementById("destinatie").value;
+
+            if (plecare === destinatie) {
+                alert("Locul de plecare și destinația nu pot fi la fel!");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
